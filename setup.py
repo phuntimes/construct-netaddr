@@ -73,7 +73,7 @@ setup(
     url="https://github.com/phuntimes/construct-netaddr",
     license="MIT License",
     author="Sean McVeigh",
-    author_email="smcveigh@gmail.com",
+    author_email="spmcveigh@gmail.com",
     description="netaddr adapters for Construct",
     classifiers=classifiers,
     install_requires=install_requirements,
