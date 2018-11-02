@@ -5,7 +5,7 @@ from enum import Enum
 from setuptools import setup, find_packages
 
 
-version = "0.1.0"
+version = "0.1.1"
 
 
 packages = find_packages(
@@ -21,7 +21,8 @@ package_dir = {'': 'src'}
 
 
 install_requirements = [
-    "construct>=2.9"
+    "construct>=2.9",
+    "netaddr>=0.7"
 ]
 
 
