@@ -1,5 +1,8 @@
 # construct-netaddr
 
+[![Build Status](https://travis-ci.com/phuntimes/construct-netaddr.svg?branch=master)](https://travis-ci.com/phuntimes/construct-netaddr)
+[![Coverage Status](https://coveralls.io/repos/github/phuntimes/construct-netaddr/badge.svg?branch=master)](https://coveralls.io/github/phuntimes/construct-netaddr?branch=master)
+
 An extension library for [construct] defining an `Adapter` for the `EUI` class of [netaddr].
 Supports both 48-bit and 64-bit addresses.
 
