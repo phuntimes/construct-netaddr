@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
 This module provides an :class:`IntEnum` to define the octet length for the
 unsigned :class:`BytesInteger` utilized internally by the :class:`Adapter` for

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
 This module defines an :class:`Adapter` subclass :class:`EUIAdapter` for
 representing a :class:`EUI` assuming an unsigned 48-bit or 64-bit integer
