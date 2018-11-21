@@ -4,7 +4,7 @@
 import pytest
 
 from netaddr import EUI
-from euiadapter import EUIAdapter
+from netstruct import EUIAdapter
 
 
 def test_parse(buffer: bytes, instance: EUI, octets: int, swapped: bool):
