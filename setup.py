@@ -51,7 +51,7 @@ class Status(Enum):
 
     @property
     def classifier(self):
-        return 'Development Status :: {:d} - {:s}'.format(*self.value)
+        return "Development Status :: {:d} - {:s}".format(*self.value)
 
 
 classifiers = [
