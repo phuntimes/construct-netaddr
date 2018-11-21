@@ -13,7 +13,7 @@ Intended to be consistent with the `Adapter` API:
 ```python
 
 from construct import Struct
-from euiadapter import EUIAdapter, EUIOctets
+from netstruct import EUIAdapter, EUIOctets
 
 
 STRUCT = Struct(
