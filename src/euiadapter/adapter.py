@@ -19,7 +19,7 @@ an :class:`EUIAdapter` instance.
 """
 
 __all__ = ['EUIAdapter']
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 __author__ = 'Sean McVeigh'
 
 from netaddr import EUI
