@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 """
 This package provides an :class:`Adapter<construct.Adapter>` for
 :class:`EUI<netaddr.EUI>` instances, supporting both 48-bit and 64-bit
