@@ -9,8 +9,7 @@ version = "0.2.2"
 
 
 packages = find_packages(
-    where="src",
-    include=["euiadapter"]
+    include=["netstruct"]
 )
 
 
