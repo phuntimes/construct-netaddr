@@ -2,10 +2,15 @@
 # -*- coding: utf-8 -*-
 
 """
-This module provides an :class:`Adapter` for :class:`EUI` instances, supporting
-both 48-bit and 64-bit addresses, and consists of two components: an enum
-:class:`EUIOctets` and the :class:`EUIAdapter`, wherein the former is intended
-to be the primary argument for the latter.
+This module defines an :class:`Adapter` subclass :class:`EUIAdapter` for
+representing a :class:`EUI` assuming an unsigned 48-bit or 64-bit integer
+representation.
+
+Encoding and decoding is passed to an underlying :class:`BytesInteger`
+:class:`Subconstruct` whose parameters are set during :class:`EUIAdapter`'s
+construction. Explicitly, these parameters are an :class:`IntEnum` subclass
+:class:`EUIOctets` defining the octet length of the integer and a boolean
+defining the endianness of the integer.
 
 While explicitly passing an :class:`IntEnum` instance to the constructor of
 :class:`EUIAdapter` is not required, value equivalence to a member within
@@ -13,27 +18,14 @@ the enum is interpreted as an enforceable condition during construction of
 an :class:`EUIAdapter` instance.
 """
 
-__all__ = ['EUIAdapter', 'EUIOctets']
-__version__ = '0.1.2'
+__all__ = ['EUIAdapter']
+__version__ = '0.2.0'
 __author__ = 'Sean McVeigh'
 
-from enum import IntEnum
 from netaddr import EUI
+from typing import Union
 from construct import Adapter, Path, Subconstruct, BytesInteger
-
-
-class EUIOctets(IntEnum):
-    """
-    An :class:`IntEnum` defining the byte length for an unsigned integer
-    representing both a 48-bit and a 64-bit address.
-
-    The purpose of this class is not only to standardize argument convention
-    but also to enforce passed values provided to :class:`EUIAdapter`'s
-    constructor.
-    """
-
-    EUI_48 = 6
-    EUI_64 = 8
+from .enum import EUIOctets
 
 
 class EUIAdapter(Adapter):
@@ -41,7 +33,7 @@ class EUIAdapter(Adapter):
     An :class:`Adapter` for 48-bit or 64-bit :class:`EUI`.
     """
 
-    def __init__(self, octets: int=EUIOctets.EUI_48, swapped: bool=False):
+    def __init__(self, octets: Union[int, EUIOctets], swapped: bool):
         """
         Utilize :class:`BytesInteger` as :class:`Subconstruct`.
 
