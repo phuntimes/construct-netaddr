@@ -40,7 +40,8 @@ def subcon(octets: int, swapped: bool) -> Construct:
         pytest.xfail("neither 48-bit nor 64-bit EUI")
 
     if swapped:
-        pytest.xfail("not swapping; why?")
+        # TODO buffer not swapped back to original
+        pytest.xfail("swapping bytes fails")
 
     return ByteSwapped(Bytes(octets)) if swapped else Bytes(octets)
 

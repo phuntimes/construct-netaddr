@@ -33,7 +33,11 @@ def decoder() -> Decoder:
 
 
 @pytest.fixture
-def subcon(octets, swapped: bool):
+def subcon(octets: int, swapped: bool):
+
+    if octets not in (6, 8):
+        pytest.xfail("neither 48-bit nor 64-bit EUI")
+
     return BytesInteger(octets, False, swapped)
 
 

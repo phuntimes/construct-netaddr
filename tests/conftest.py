@@ -30,7 +30,7 @@ def octets(request) -> int:
 
 @pytest.fixture
 def value(octets: int) -> int:
-    return random.randint(0, 2 ** (8 * octets))
+    return random.randint(0, 2 ** (8 * octets) - 1)
 
 
 @pytest.fixture
@@ -44,7 +44,7 @@ def byteorder(swapped: bool) -> str:
 
 
 @pytest.fixture
-def buffer(octets: int, byteorder: str, value: int) -> bytes:
-    # buffer = instance.packed
-    # return buffer[::-1] if swapped else buffer
-    return (value).to_bytes(octets, byteorder, signed=False)
+def buffer(instance: EUI, swapped: bool) -> bytes:
+    buffer = instance.packed
+    return buffer[::-1] if swapped else buffer
+    # return (value).to_bytes(octets, byteorder, signed=False)
