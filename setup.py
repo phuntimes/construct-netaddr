@@ -9,11 +9,12 @@ version = "0.2.4"
 
 
 packages = find_packages(
+    where="src",
     include=["netstruct"]
 )
 
 
-# package_dir = {'': 'src'}
+package_dir = {'': 'src'}
 
 
 # package_data = {}
@@ -68,7 +69,7 @@ setup(
     name="construct-netaddr",
     version=version,
     packages=packages,
-    # package_dir=package_dir,
+    package_dir=package_dir,
     url="https://github.com/phuntimes/construct-netaddr",
     license="MIT License",
     author="Sean McVeigh",

@@ -12,20 +12,37 @@ construction. Explicitly, these parameters are an :class:`IntEnum` subclass
 :class:`EUIOctets` defining the octet length of the integer and a boolean
 defining the endianness of the integer.
 
-While explicitly passing an :class:`IntEnum` instance to the constructor of
+The purpose of of the enum :class:`EUIOctets` is to not only standardize
+argument convention for the adapter's constructor but also to enforce passed
+values provided to the constructor during instantiation.
+
+While explicitly passing an :class:`EUIOctets` instance to the constructor of
 :class:`EUIAdapter` is not required, value equivalence to a member within
 the enum is interpreted as an enforceable condition during construction of
 an :class:`EUIAdapter` instance.
 """
 
-__all__ = ['EUIAdapter']
+__all__ = ['EUIAdapter', 'EUIOctets']
 __version__ = '0.2.4'
 __author__ = 'Sean McVeigh'
 
-from netaddr import EUI
+from enum import IntEnum
 from typing import Union
+from netaddr import EUI
 from construct import Adapter, Path, Subconstruct, BytesInteger
-from .enum import EUIOctets
+
+
+class EUIOctets(IntEnum):
+    """
+    An :class:`IntEnum` defining the byte length for an unsigned integer
+    representing both a 48-bit and a 64-bit address.
+    """
+
+    EUI_48 = 6
+    EUI_64 = 8
+
+
+Octets = Union[int, EUIOctets]
 
 
 class EUIAdapter(Adapter):
@@ -33,7 +50,7 @@ class EUIAdapter(Adapter):
     An :class:`Adapter` for 48-bit or 64-bit :class:`EUI`.
     """
 
-    def __init__(self, octets: Union[int, EUIOctets], swapped: bool):
+    def __init__(self, octets: Octets, swapped: bool):
         """
         Utilize :class:`BytesInteger` as :class:`Subconstruct`.
 
