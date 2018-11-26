@@ -5,7 +5,7 @@ from enum import Enum
 from setuptools import setup, find_packages
 
 
-version = "0.2.5"
+version = "0.2.6"
 
 
 packages = find_packages(
